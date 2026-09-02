@@ -2,7 +2,14 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { HeroVisual } from "./HeroVisual";
 
-const capabilities = ["Advertising", "Creative", "Social", "Branding", "Web"];
+const capabilities = [
+  "Digital Advertising",
+  "Creative Content",
+  "Social Media",
+  "Branding",
+  "Web & Digital Solutions",
+  "Digital Tools & Automation",
+];
 
 export function Hero() {
   return (
@@ -18,7 +25,7 @@ export function Hero() {
             className="eyebrow eyebrow-dark animate-hero"
             style={{ animationDelay: "0ms" }}
           >
-            Digital Advertising &amp; Creative Agency
+            ADSolution &middot; Advertising &bull; Digital &bull; Solution
           </p>
           <h1
             className="animate-hero-slide mt-6 text-balance text-[2.6rem] leading-[1.05] text-white sm:text-6xl lg:text-[3.6rem] xl:text-[4.2rem]"

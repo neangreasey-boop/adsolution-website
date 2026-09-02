@@ -55,12 +55,13 @@ adsolution/
 ├── lib/
 │   ├── site.ts                 # Site config: name, URL, email, nav, socials
 │   ├── utils.ts                # cn() helper
-│   └── data/                   # Structured content (services, values, process, portfolio)
+│   └── data/                   # Structured content (services, values, founder, process, portfolio)
 ├── functions/
 │   └── api/contact.ts          # Cloudflare Pages Function: emails contact inquiries
 ├── public/
 │   ├── _headers                # Cloudflare security + cache headers
 │   ├── og-image.png            # Open Graph / Twitter card image (1200×630)
+│   ├── founder/                # Founder photo (neang-reasey.jpg / .webp)
 │   ├── icon.svg, favicon.ico, apple-touch-icon.png, site.webmanifest
 ├── next.config.ts              # output: "export", trailingSlash, unoptimized images
 ├── wrangler.toml               # Cloudflare Pages settings
@@ -72,29 +73,28 @@ adsolution/
 
 All repeated content lives in `lib/`:
 
-- `lib/site.ts` — brand name, domain, email, navigation, **social links**
-- `lib/data/services.ts` — the five services and their bullet lists
-- `lib/data/values.ts` — trust pillars (home) and core values (about)
+- `lib/site.ts` — brand name, domain, email, phones, address, navigation, **social links**
+- `lib/data/founder.ts` — founder profile, skills and quote
+- `lib/data/services.ts` — the six services and their bullet lists
+- `lib/data/values.ts` — trust pillars (home), core values, mission and vision (about)
 - `lib/data/process.ts` — "How We Work" steps and the "Attention → Action" workflow
 - `lib/data/portfolio.ts` — portfolio projects (**currently placeholders**)
 
 ---
 
-## Placeholders to replace before launch
+## Placeholders / items still to provide
 
 | Item | Where | Notes |
 | --- | --- | --- |
 | **Logo** | `components/ui/Logo.tsx` | An inline SVG mark + wordmark is used. Replace with the official logo (instructions in the file). Also update `public/icon.svg`, `favicon.ico`, `apple-touch-icon.png`, `og-image.png`. |
-| **Portfolio projects** | `lib/data/portfolio.ts` | Six sample projects, each `placeholder: true` (renders a "Sample project" badge). Replace with real work + images in `/public/portfolio/`, set `placeholder: false`. Remove the notice in `app/portfolio/page.tsx`. |
-| **Social links** | `lib/site.ts` → `socials` | Set `href` and `configured: true` for Facebook, Instagram, LinkedIn, TikTok. Unconfigured entries render as inert placeholders. |
+| **Portfolio projects** | `lib/data/portfolio.ts` | The list is empty on purpose. While empty, `/portfolio` shows the "What We Can Do" capabilities section. Add real, approved projects (with images in `/public/portfolio/`) to switch to the project grid. |
+| **Extra social channels** | `lib/site.ts` → `socials` | Only Facebook and Instagram are listed. Add LinkedIn / TikTok / Telegram only when a real profile exists. |
 | **Contact form email** | Cloudflare Pages env vars | `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` — see DEPLOYMENT.md. |
 | **Legal pages** | `app/privacy-policy`, `app/terms-of-service` | Generic templates — review with a legal advisor. |
 | **Response time** | `app/contact/page.tsx` | "Usually within 1–2 business days" — adjust to reality. |
 | **Budget ranges** | `components/sections/ContactForm.tsx` → `budgetOptions` | Adjust to your pricing. |
 
-No fake clients, testimonials, statistics or awards are included anywhere.
-
----
+No fake clients, testimonials, statistics, awards or results are included anywhere.
 
 ## Design system
 

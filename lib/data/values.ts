@@ -37,26 +37,32 @@ export const coreValues = [
   {
     title: "Creativity",
     description:
-      "We look for the idea that makes people stop, look and remember.",
+      "We develop creative ideas that help businesses communicate clearly and stand out in a competitive digital environment.",
   },
   {
-    title: "Integrity",
+    title: "Results-Focused",
     description:
-      "Honest recommendations, transparent reporting and no inflated promises.",
+      "We focus on practical strategies and solutions that are aligned with business objectives.",
   },
   {
-    title: "Results",
+    title: "Professionalism",
     description:
-      "Every decision is measured against the outcome it creates for your business.",
+      "We value quality, responsibility, transparency, and professional communication in every project.",
   },
   {
     title: "Innovation",
     description:
-      "We keep learning new platforms, formats and tools so you don't have to.",
+      "We continuously explore new digital technologies, tools, and approaches to improve the way businesses work and grow.",
   },
   {
     title: "Partnership",
     description:
-      "We work as an extension of your team, invested in your long-term growth.",
+      "We believe strong results come from understanding our clients and working together as long-term partners.",
   },
 ];
+
+export const mission =
+  "To provide reliable, creative, and results-focused digital services that help businesses reach the right audience, communicate their value, and build sustainable digital growth.";
+
+export const vision =
+  "To become a trusted digital partner for businesses, helping them grow through effective advertising, creative communication, and practical digital solutions.";

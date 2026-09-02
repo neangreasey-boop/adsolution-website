@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Compass, Eye, Lightbulb, Cpu, BarChart3, Handshake } from "lucide-react";
-import { coreValues } from "@/lib/data/values";
+import { coreValues, mission, vision } from "@/lib/data/values";
+import { FounderSection } from "@/components/sections/FounderSection";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -11,7 +12,7 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "ADSolution is a modern digital advertising and creative solution company focused on strategy, creativity, technology, performance and long-term client relationships.",
+    "ADSolution is a digital advertising and creative solutions agency helping businesses build, grow and improve their digital presence. Meet the founder, Neang Reasey, and learn about our mission, vision and values.",
   alternates: { canonical: "/about" },
 };
 
@@ -49,7 +50,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About ADSolution"
         title="Building Better Digital Experiences for Growing Businesses."
-        description="ADSolution is a modern digital advertising and creative solution company. The name says it: Advertising + Digital + Solution — one team that brings all three together."
+        description="ADSolution is a digital advertising and creative solutions agency focused on helping businesses build, grow, and improve their digital presence."
       />
 
       {/* Story */}
@@ -64,26 +65,26 @@ export default function AboutPage() {
             </div>
             <Reveal delay={100} className="space-y-5 text-lg leading-relaxed text-muted lg:col-span-7">
               <p>
-                Most growing businesses work with several disconnected
-                providers: one for ads, one for design, one for the website.
-                The result is inconsistent messaging, slow execution and
-                nobody accountable for the outcome.
+                We combine advertising strategy, creative content, social
+                media, branding, and digital solutions to provide practical
+                services designed around the needs of each business.
               </p>
               <p>
-                ADSolution was built to solve that. We combine strategy,
-                creative production, digital advertising and practical
-                digital solutions under one roof — so your brand looks
-                consistent everywhere, campaigns launch faster and results
-                are measured in one place.
+                From building a strong visual identity to managing digital
+                campaigns and creating engaging content, ADSolution aims to
+                make digital marketing simpler, more effective, and more
+                accessible for businesses.
               </p>
               <p className="border-l-2 border-brand-500 pl-5 font-medium text-ink">
-                We don&apos;t just create ads. We create digital solutions that
-                help businesses grow.
+                Advertising + Digital + Solution — one team that brings all
+                three together.
               </p>
             </Reveal>
           </div>
         </Container>
       </section>
+
+      <FounderSection />
 
       {/* Mission / Vision */}
       <section className="bg-navy-950 py-20 text-white sm:py-24">
@@ -93,12 +94,12 @@ export default function AboutPage() {
               {
                 icon: Compass,
                 label: "Our Mission",
-                text: "To help businesses grow through effective advertising, creative communication, and practical digital solutions.",
+                text: mission,
               },
               {
                 icon: Eye,
                 label: "Our Vision",
-                text: "To become a trusted digital growth partner for ambitious businesses.",
+                text: vision,
               },
             ].map((m, i) => (
               <Reveal
@@ -113,7 +114,7 @@ export default function AboutPage() {
                 <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-brand-300">
                   {m.label}
                 </p>
-                <p className="mt-3 text-balance font-display text-2xl font-bold leading-snug text-white sm:text-[1.75rem]">
+                <p className="mt-3 text-balance font-display text-xl font-bold leading-snug text-white sm:text-2xl">
                   {m.text}
                 </p>
               </Reveal>

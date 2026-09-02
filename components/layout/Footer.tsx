@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Mail, Globe } from "lucide-react";
-import { nav, site, socials } from "@/lib/site";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
+import { nav, site, socials, telHref } from "@/lib/site";
 import { services } from "@/lib/data/services";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
@@ -26,33 +26,22 @@ export function Footer() {
               {site.tagline}
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/55">
-              A modern digital advertising and creative solution company helping
-              businesses grow through strategy, creativity and technology.
+              A digital advertising and creative solutions agency helping
+              businesses build, grow and improve their digital presence.
             </p>
 
             <ul className="mt-7 flex items-center gap-2" aria-label="Social media">
               {socials.map((s) => (
                 <li key={s.key}>
-                  {s.configured ? (
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={s.name}
-                      className="flex size-10 items-center justify-center rounded-md border border-white/10 text-white/70 transition hover:border-brand-400 hover:bg-brand-500/10 hover:text-white"
-                    >
-                      <SocialIcon name={s.key} className="size-[18px]" />
-                    </a>
-                  ) : (
-                    <span
-                      role="img"
-                      aria-label={`${s.name} — link not configured yet`}
-                      title={`${s.name} (URL to be configured)`}
-                      className="flex size-10 cursor-default items-center justify-center rounded-md border border-dashed border-white/15 text-white/35"
-                    >
-                      <SocialIcon name={s.key} className="size-[18px]" />
-                    </span>
-                  )}
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={s.name}
+                    className="flex size-10 items-center justify-center rounded-md border border-white/10 text-white/70 transition hover:border-brand-400 hover:bg-brand-500/10 hover:text-white"
+                  >
+                    <SocialIcon name={s.key} className="size-[18px]" />
+                  </a>
                 </li>
               ))}
             </ul>
@@ -108,6 +97,17 @@ export function Footer() {
                     {site.email}
                   </a>
                 </li>
+                {site.phones.map((ph) => (
+                  <li key={ph}>
+                    <a
+                      href={telHref(ph)}
+                      className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white"
+                    >
+                      <Phone className="size-4 text-brand-400" aria-hidden />
+                      {ph}
+                    </a>
+                  </li>
+                ))}
                 <li>
                   <a
                     href={site.url}
@@ -116,6 +116,14 @@ export function Footer() {
                     <Globe className="size-4 text-brand-400" aria-hidden />
                     {site.domain}
                   </a>
+                </li>
+                <li className="flex items-start gap-2 text-sm leading-relaxed text-white/60">
+                  <MapPin className="mt-0.5 size-4 shrink-0 text-brand-400" aria-hidden />
+                  <span>
+                    {site.address.street}, {site.address.commune},
+                    {" "}{site.address.district}, {site.address.province}
+                    {" "}{site.address.postalCode}, {site.address.country}
+                  </span>
                 </li>
               </ul>
               <Link

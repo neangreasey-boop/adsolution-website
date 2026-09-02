@@ -1,43 +1,45 @@
 import type { Metadata } from "next";
+import { projects } from "@/lib/data/portfolio";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
+import { CapabilitiesSection } from "@/components/sections/CapabilitiesSection";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies",
+  title: "Portfolio & Capabilities",
   description:
-    "Selected advertising, branding, creative, social media and web projects by ADSolution.",
+    "What ADSolution can do across digital advertising, social media, creative, branding, web and digital tools. Client case studies are published as they become available.",
   alternates: { canonical: "/portfolio" },
 };
 
 export default function PortfolioPage() {
+  const hasProjects = projects.length > 0;
+
   return (
     <>
       <PageHeader
         eyebrow="Portfolio"
-        title="Work That Turns Attention Into Results."
-        description="A selection of the projects we take on across advertising, branding, creative, social media and web."
+        title={hasProjects ? "Work That Turns Attention Into Results." : "What We Can Do for Your Business."}
+        description={
+          hasProjects
+            ? "A selection of the projects we take on across advertising, branding, creative, social media and web."
+            : "Client case studies are published here as they become available. In the meantime, here is the work ADSolution delivers across every service area."
+        }
       />
 
-      <section className="py-16 sm:py-20 lg:py-24">
-        <Container>
-          <Reveal>
-            <PortfolioGrid />
-          </Reveal>
-
-          {/* Placeholder notice — remove once real projects are added */}
-          <Reveal delay={100} className="mt-10">
-            <p className="rounded-lg border border-dashed border-line bg-surface px-5 py-4 text-sm text-muted">
-              <strong className="font-semibold text-ink">Note:</strong> The
-              projects shown are sample entries so the layout can be reviewed.
-              They will be replaced with real ADSolution case studies. No
-              results or client names are shown until they are verified.
-            </p>
-          </Reveal>
-        </Container>
-      </section>
+      {hasProjects ? (
+        <section className="py-16 sm:py-20 lg:py-24">
+          <Container>
+            <Reveal>
+              <PortfolioGrid />
+            </Reveal>
+          </Container>
+        </section>
+      ) : (
+        <CapabilitiesSection />
+      )}
 
       <CTASection
         title="Your Project Could Be Next."

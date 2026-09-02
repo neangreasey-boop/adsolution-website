@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Digital advertising, social media management, creative & content, branding and digital solutions — five service areas built to help your business grow.",
+    "Digital advertising, social media management, creative & content, branding, web & digital solutions and digital tools & automation — six service areas built to help your business grow.",
   alternates: { canonical: "/services" },
 };
 
@@ -22,7 +22,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="Digital Services Built Around Business Growth."
-        description="Five focused service areas that work together — strategy, creative, advertising, branding and the digital foundations behind them."
+        description="Six focused service areas that work together — advertising, social media, creative, branding, web and the digital tools behind them."
       >
         {/* In-page navigation */}
         <nav aria-label="Services on this page" className="mt-10">

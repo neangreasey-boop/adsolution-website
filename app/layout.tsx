@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { site } from "@/lib/site";
+import { site, socials } from "@/lib/site";
+import { founder } from "@/lib/data/founder";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -80,8 +81,25 @@ const organizationJsonLd = {
   name: site.name,
   url: site.url,
   email: site.email,
+  telephone: site.phones[0],
   description: site.description,
   logo: `${site.url}/icon.svg`,
+  image: `${site.url}/og-image.png`,
+  sameAs: socials.map((s) => s.href),
+  founder: {
+    "@type": "Person",
+    name: founder.name,
+    jobTitle: "Founder",
+    image: `${site.url}${founder.photo}`,
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${site.address.street}, ${site.address.commune}`,
+    addressLocality: site.address.district,
+    addressRegion: site.address.province,
+    postalCode: site.address.postalCode,
+    addressCountry: "KH",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

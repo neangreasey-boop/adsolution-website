@@ -12,7 +12,7 @@ export function ValueSection() {
             <SectionHeader
               eyebrow="Why ADSolution"
               title="Built for Businesses That Want to Grow."
-              description="We don't just create ads. We create digital solutions that help businesses grow — combining strategy, creative and technology into one focused partnership."
+              description="We don't just create ads. We create digital solutions that help businesses grow — combining advertising strategy, creative content, social media, branding and digital solutions into practical services designed around each business."
             />
           </div>
 

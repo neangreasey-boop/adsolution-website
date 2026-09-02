@@ -14,7 +14,7 @@ export function ServicesSection() {
           <SectionHeader
             eyebrow="Services"
             title="Everything Your Business Needs to Grow Online."
-            description="Five focused service areas, designed to work together — or stand on their own."
+            description="Six focused service areas — advertising, social, creative, branding, web and digital tools — designed to work together or stand on their own."
           />
           <Reveal delay={100} className="shrink-0">
             <Button href="/services" variant="secondary" arrow>
@@ -29,26 +29,6 @@ export function ServicesSection() {
               <ServiceCard service={s} />
             </Reveal>
           ))}
-          {/* 6th slot: CTA tile keeps the 3-col grid balanced */}
-          <Reveal delay={180} className="h-full">
-            <div className="flex h-full flex-col justify-between rounded-xl bg-navy-950 p-7 text-white sm:p-8">
-              <div>
-                <p className="eyebrow eyebrow-dark">Not sure where to start?</p>
-                <h3 className="mt-4 text-2xl font-bold text-white">
-                  Get a digital strategy tailored to your business.
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/60">
-                  Tell us about your goals and we&apos;ll recommend the right
-                  mix of services — no obligation.
-                </p>
-              </div>
-              <div className="pt-8">
-                <Button href="/contact" variant="white" arrow>
-                  Get a Digital Strategy
-                </Button>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </Container>
     </section>

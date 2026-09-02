@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Mail, Globe, Clock, MessageSquareText } from "lucide-react";
-import { site, socials } from "@/lib/site";
+import { Mail, Phone, MapPin, Globe, Clock, MessageSquareText } from "lucide-react";
+import { site, socials, telHref } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
@@ -50,6 +50,32 @@ export default function ContactPage() {
                   </li>
                   <li className="flex gap-4">
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100">
+                      <Phone className="size-[18px]" aria-hidden />
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Phone</p>
+                      {site.phones.map((ph) => (
+                        <a key={ph} href={telHref(ph)} className="mt-1 block font-medium text-ink hover:text-brand-600">
+                          {ph}
+                        </a>
+                      ))}
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100">
+                      <MapPin className="size-[18px]" aria-hidden />
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Address</p>
+                      <address className="mt-1 not-italic font-medium leading-relaxed text-ink">
+                        {site.address.street},<br />
+                        {site.address.commune}, {site.address.district},<br />
+                        {site.address.province} {site.address.postalCode}, {site.address.country}
+                      </address>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100">
                       <Globe className="size-[18px]" aria-hidden />
                     </span>
                     <div>
@@ -76,28 +102,15 @@ export default function ContactPage() {
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {socials.map((s) => (
                     <li key={s.key}>
-                      {s.configured ? (
-                        <a
-                          href={s.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-md border border-line px-3.5 py-2 text-sm font-medium text-ink transition hover:border-brand-300 hover:bg-brand-50"
-                        >
-                          <SocialIcon name={s.key} className="size-4 text-brand-600" />
-                          {s.name}
-                        </a>
-                      ) : (
-                        <span
-                          title={`${s.name} link to be configured`}
-                          className="inline-flex cursor-default items-center gap-2 rounded-md border border-dashed border-line px-3.5 py-2 text-sm font-medium text-muted"
-                        >
-                          <SocialIcon name={s.key} className="size-4" />
-                          {s.name}
-                          <span className="rounded bg-surface px-1.5 py-0.5 text-[10px] uppercase tracking-wider">
-                            Soon
-                          </span>
-                        </span>
-                      )}
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-md border border-line px-3.5 py-2 text-sm font-medium text-ink transition hover:border-brand-300 hover:bg-brand-50"
+                      >
+                        <SocialIcon name={s.key} className="size-4 text-brand-600" />
+                        {s.name}
+                      </a>
                     </li>
                   ))}
                 </ul>

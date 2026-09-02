@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
  * The form POSTs JSON to `NEXT_PUBLIC_CONTACT_ENDPOINT` (default:
  * `/api/contact`). On Cloudflare Pages that path is served by the
  * Pages Function in `/functions/api/contact.ts`, which emails the
- * inquiry to admin@adsolution.men.
+ * inquiry to the CONTACT_TO address configured in Cloudflare.
  *
  * To use a third-party form backend instead (Formspree, Web3Forms, …)
  * set NEXT_PUBLIC_CONTACT_ENDPOINT to that service's URL.

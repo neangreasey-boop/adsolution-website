@@ -1,20 +1,36 @@
 /**
- * Central site configuration.
- * Anything marked TODO is a placeholder to replace before launch.
+ * Central site configuration — the single source of truth for brand,
+ * contact and social details used across pages, footer and metadata.
  */
 export const site = {
   name: "ADSolution",
   tagline: "Advertising. Digital. Solutions.",
   url: "https://adsolution.men",
   domain: "adsolution.men",
-  email: "admin@adsolution.men",
+  email: "neangreasey@hotmail.com",
+  phones: ["+855 77 239 009", "+855 16 339 946"],
+  address: {
+    street: "National Road 51, Phum Lvea",
+    commune: "Tumnob Thum Commune",
+    district: "Ponhea Lueu District",
+    province: "Kandal Province",
+    postalCode: "08091302",
+    country: "Cambodia",
+    /** Single-line version for display */
+    full: "National Road 51, Phum Lvea, Tumnob Thum Commune, Ponhea Lueu District, Kandal Province, 08091302, Cambodia",
+  },
   title: "ADSolution — Digital Advertising & Creative Solutions",
   description:
     "ADSolution provides digital advertising, creative content, branding, social media management and digital solutions for growing businesses.",
+  positioning:
+    "A digital advertising and creative solutions agency focused on helping businesses build, grow, and improve their digital presence.",
   locale: "en_US",
-  /** Founded / copyright year shown in the footer */
+  /** Copyright year shown in the footer */
   year: 2026,
 } as const;
+
+/** Phone number as a tel: href (digits only, keeps leading +) */
+export const telHref = (phone: string) => `tel:${phone.replace(/[^\d+]/g, "")}`;
 
 export const nav = [
   { label: "Home", href: "/" },
@@ -25,15 +41,12 @@ export const nav = [
 ] as const;
 
 /**
- * Social profiles.
- * TODO: Replace each `href` with the real profile URL. Entries with
- * `configured: false` render as inert placeholders (no broken links).
+ * Social profiles. Only real, verified profiles are listed — add a new
+ * entry here when another channel (LinkedIn, TikTok, Telegram…) exists.
  */
 export const socials = [
-  { name: "Facebook", key: "facebook", href: "#", configured: false },
-  { name: "Instagram", key: "instagram", href: "#", configured: false },
-  { name: "LinkedIn", key: "linkedin", href: "#", configured: false },
-  { name: "TikTok", key: "tiktok", href: "#", configured: false },
+  { name: "Facebook", key: "facebook", href: "https://web.facebook.com/reaseyneang" },
+  { name: "Instagram", key: "instagram", href: "https://instagram.com/reasey_neang" },
 ] as const;
 
-export type SocialKey = (typeof socials)[number]["key"];
+export type SocialKey = "facebook" | "instagram" | "linkedin" | "tiktok";
