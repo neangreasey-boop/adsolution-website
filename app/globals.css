@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   ADSolution Design System
+   Electric blue on deep navy / white. Minimal, sharp, spacious.
+------------------------------------------------------------------- */
+
+@theme {
+  /* Brand palette */
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #d9e5ff;
+  --color-brand-200: #b6ccff;
+  --color-brand-300: #85a9ff;
+  --color-brand-400: #4d7dff;
+  --color-brand-500: #2563eb; /* Electric blue — primary accent */
+  --color-brand-600: #1d4ed8; /* Royal blue — hover / emphasis */
+  --color-brand-700: #1e40af;
+  --color-brand-800: #1e3a8a;
+  --color-brand-900: #172554;
+
+  --color-navy-700: #14213d;
+  --color-navy-800: #0f1a33;
+  --color-navy-900: #0a1226;
+  --color-navy-950: #060b18;
+
+  --color-charcoal-800: #1f2937;
+  --color-charcoal-900: #111827;
+
+  --color-ink: #0b1220; /* primary text on light */
+  --color-muted: #5b6577; /* secondary text on light */
+  --color-line: #e5e9f0; /* borders on light */
+  --color-surface: #f6f8fb; /* subtle section background */
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Shadows (kept subtle, blue-tinted) */
+  --shadow-card: 0 1px 2px rgb(11 18 32 / 0.04), 0 8px 24px -12px rgb(11 18 32 / 0.12);
+  --shadow-card-hover: 0 1px 2px rgb(11 18 32 / 0.05), 0 20px 40px -16px rgb(37 99 235 / 0.25);
+  --shadow-glow: 0 0 0 1px rgb(37 99 235 / 0.35), 0 10px 30px -10px rgb(37 99 235 / 0.55);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-brand-500);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Eyebrow label above section titles */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-6 bg-brand-500;
+  }
+  .eyebrow-dark {
+    @apply text-brand-300;
+  }
+  .eyebrow-dark::before {
+    @apply bg-brand-400;
+  }
+
+  /* Fine technical grid used on dark panels */
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .bg-grid-light {
+    background-image:
+      linear-gradient(to right, rgb(11 18 32 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(11 18 32 / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Card baseline */
+  .card {
+    @apply relative rounded-xl border border-line bg-white shadow-card transition duration-300;
+    transition-timing-function: var(--ease-out-expo);
+  }
+  .card-hover:hover {
+    @apply -translate-y-1 border-brand-200 shadow-card-hover;
+  }
+
+  /* Line-clamp for card copy */
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  /* Scroll-triggered reveal. `.reveal` starts hidden and transitions
+     when `.is-visible` is added by the Reveal component. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 0.8s var(--ease-out-expo),
+      transform 0.8s var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal-scale.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* Image reveal — a mask that wipes upward */
+  .reveal-clip {
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 1s var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal-clip.is-visible {
+    clip-path: inset(0 0 0 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-scale,
+    .reveal-clip {
+      opacity: 1;
+      transform: none;
+      clip-path: none;
+      transition: none;
+    }
+  }
+
+  /* Hero floating motion */
+  @keyframes float-y {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-float {
+    animation: float-y 6s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float-y 9s ease-in-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+  .animate-pulse-ring {
+    animation: pulse-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  @keyframes draw-line {
+    from {
+      stroke-dashoffset: 1200;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  .animate-draw {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: draw-line 2.2s var(--ease-out-expo) 0.3s forwards;
+  }
+
+  @keyframes bar-up {
+    from {
+      transform: scaleY(0.15);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+  .animate-bar {
+    transform-origin: bottom;
+    animation: bar-up 1.2s var(--ease-out-expo) forwards;
+  }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .animate-hero {
+    opacity: 0;
+    animation: hero-in 0.6s var(--ease-out-expo) forwards;
+  }
+  /* Slide-only variant for the LCP heading: stays painted (opacity 1)
+     so Largest Contentful Paint isn't delayed by the animation. */
+  @keyframes hero-slide {
+    from {
+      transform: translateY(18px);
+    }
+    to {
+      transform: none;
+    }
+  }
+  .animate-hero-slide {
+    animation: hero-slide 0.7s var(--ease-out-expo) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero,
+    .animate-hero-slide {
+      opacity: 1;
+      animation: none;
+    }
+    .animate-draw {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    .animate-bar {
+      animation: none;
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

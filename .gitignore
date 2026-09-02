@@ -1,0 +1,20 @@
+# dependencies
+/node_modules
+# next.js
+/.next/
+/out/
+# misc
+.DS_Store
+*.pem
+# debug
+npm-debug.log*
+# env files — never commit secrets
+.env*
+!.env.example
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+# cloudflare
+.wrangler/
+# local screenshots
+/screenshots/
