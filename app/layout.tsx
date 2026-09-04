@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+
+  other: {
+    "facebook-domain-verification": "665wzo2bnsu2is3axdgz6p56dv4yd6",
+  },
   applicationName: site.name,
   keywords: [
     "digital advertising",
